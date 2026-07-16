@@ -149,8 +149,28 @@
       <li>Oylik hisobot</li>
       <li>Byudjet monitoringi</li>
     </ul>
-    <a href="#popup:FORM_ID" class="kr-btn">Buyurtma berish</a>
+    <a href="#buyurtma-form" class="kr-btn">Buyurtma berish</a>
   </div>
+  <!-- ARIZA FORMASI -->
+<div id="buyurtma-form" style="max-width: 400px; margin: 40px auto; padding: 20px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Inter', sans-serif;">
+  <h3 style="text-align: center; color: #1B1F23; margin-bottom: 20px;">Ariza qoldiring</h3>
+  
+  <form>
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 500;">Ismingiz</label>
+      <input type="text" name="name" required placeholder="Masalan: Farruh" style="width: 100%; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; box-sizing: border-box;">
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: 500;">Telefon raqamingiz</label>
+      <input type="tel" name="phone" required placeholder="+998 90 123 45 67" style="width: 100%; padding: 10px; border: 1px solid #D1D5DB; border-radius: 6px; box-sizing: border-box;">
+    </div>
+    
+    <button type="submit" style="width: 100%; padding: 12px; background: #3D7BFD; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s;">
+      Yuborish
+    </button>
+  </form>
+</div>
   
   <script>
     (function() {
