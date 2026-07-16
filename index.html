@@ -187,16 +187,32 @@
   </script>
 </div>
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwbH5NgZ1Oqeh1hqODxOSntUyeqQZLSMvL5xSFAfc7TJy-CHKeQgnDoF1y0lSjWhu7cNg/exec';
-const form = document.querySelector('#buyurtma-form form');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwbH5NgZ1Oqeh1hqODxOSntUyeqQZLSMvL5xSFAfc7TJy-CHKeQgnDoF1y0lSjWhu7cNg/exec';
+  const form = document.querySelector('#buyurtma-form form');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-         alert("Rahmat! Arizangiz qabul qilindi.");
-         form.reset();
-      })
-      .catch(error => console.error('Xatolik yuz berdi!', error.message));
-  });
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      submitButton.innerText = "Yuborilmoqda...";
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+           alert("Rahmat! Arizangiz muvaffaqiyatli qabul qilindi.");
+           form.reset();
+        })
+        .catch(error => {
+           alert("Xatolik yuz berdi: " + error.message);
+           console.error('Xatolik!', error);
+        })
+        .finally(() => {
+           submitButton.disabled = false;
+           submitButton.innerText = "Yuborish";
+        });
+    });
+  } else {
+    console.error("Xatolik: #buyurtma-form ichida form elementi topilmadi!");
+  }
 </script>
