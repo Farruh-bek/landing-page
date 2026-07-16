@@ -151,7 +151,7 @@
     </ul>
     <a href="#popup:FORM_ID" class="kr-btn">Buyurtma berish</a>
   </div>
-
+  
   <script>
     (function() {
       var els = document.querySelectorAll('.kr-header, .kr-card');
@@ -166,3 +166,17 @@
     })();
   </script>
 </div>
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwbH5NgZ1Oqeh1hqODxOSntUyeqQZLSMvL5xSFAfc7TJy-CHKeQgnDoF1y0lSjWhu7cNg/exec';
+const form = document.querySelector('form');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+         alert("Rahmat! Arizangiz qabul qilindi.");
+         form.reset();
+      })
+      .catch(error => console.error('Xatolik yuz berdi!', error.message));
+  });
+</script>
